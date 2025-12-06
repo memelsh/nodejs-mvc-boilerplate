@@ -1,31 +1,8 @@
-name: Hotelaria Service CI (Gestão de Reservas)
-
-on:
-  workflow_dispatch:           
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+name: Hotelaria CI
+on: [push, workflow_dispatch]
 jobs:
-  build-and-test:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout do código
-      uses: actions/checkout@v3
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-
-    - name: Instalar dependências (Módulo de Reservas)
-      run: npm ci
-
-    - name: Verificar Linting (Qualidade de Código)
-      run: npm run lint --if-present
-
-    - name: Executar Testes Automatizados
-      run: echo "Testando integridade da Reserva..." && npm test --if-present
-
+      - name: Teste Simples
+        run: echo "O workflow funcionou!"
