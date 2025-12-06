@@ -1,0 +1,27 @@
+name: CI Hotelaria (Gestão de Reservas)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 1. Baixar Código (Checkout)
+      uses: actions/checkout@v3
+
+    - name: 2. Preparar Ambiente (Node.js)
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: 3. Instalar Dependências do Projeto
+      run: npm ci
+
+    - name: 4. Executar Testes de Reserva
+      # Simula o teste verificando se não há conflito de quartos
+      run: npm test --if-present
