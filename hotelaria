@@ -28,3 +28,4 @@ jobs:
 
     - name: Executar Testes Automatizados
       run: echo "Testando integridade da Reserva..." && npm test --if-present
+
