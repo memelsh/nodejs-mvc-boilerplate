@@ -1,6 +1,7 @@
 name: Hotelaria Service CI (Gestão de Reservas)
 
 on:
+  workflow_dispatch:           
   push:
     branches: [ "master" ]
   pull_request:
@@ -25,6 +26,5 @@ jobs:
     - name: Verificar Linting (Qualidade de Código)
       run: npm run lint --if-present
 
-    # Simula testes na entidade "Reserva" e "Hóspede"
     - name: Executar Testes Automatizados
       run: echo "Testando integridade da Reserva..." && npm test --if-present
