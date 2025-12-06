@@ -1,0 +1,30 @@
+name: Hotelaria Service CI (Gestão de Reservas)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+    - name: Instalar dependências (Módulo de Reservas)
+      run: npm ci
+
+    - name: Verificar Linting (Qualidade de Código)
+      run: npm run lint --if-present
+
+    # Simula testes na entidade "Reserva" e "Hóspede"
+    - name: Executar Testes Automatizados
+      run: echo "Testando integridade da Reserva..." && npm test --if-present
